@@ -3,26 +3,23 @@ import imagenFondo from '../assets/images/mandalorian.jpg';
 import ContentRowMovies from './ContentRowMovies';
 import GenreCard from './GenreCard';
 import Painel from './Painel';
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 function ContentRowTop(){
 	const informacoes = [
 		{titulo: "Movies in Data Base", quantidade:21, icone:'film', cor:'primary'},
 		{titulo: "Total Awards", quantidade:79, icone:'award', cor:'success'},
 		{titulo: "Actors Quantity", quantidade:49, icone:'user', cor:'warning'},
-
 	];
-	const genres = [
-		'Acción', 
-		'Animación',
-		'Aventura',
-		'Ciencia Ficción',
-		'Comedia',
-		'Documental',
-		'Drama',
-		'Fantasia',
-		'Infantiles',
-		'Musical'
-	]
+
+	const [ genres, setGenres ] = useState([]);
+
+	useEffect(() => {
+		axios.get("http://localhost:3001/api/genres").then((resp) => {
+			setGenres(resp.data.data);
+		});
+	}, []);
 
     return(
         <React.Fragment>
@@ -61,7 +58,7 @@ function ContentRowTop(){
 						{/*<!-- Genres in DB -->*/}
 						<Painel titulo="Genres in Data Base">
 						<div className="row">
-							{genres.map(genre => <GenreCard name={genre}/>)}	
+							{genres.map(genre => <GenreCard name={genre.name}/>)}	
 						</div>
 						</Painel>
 						
