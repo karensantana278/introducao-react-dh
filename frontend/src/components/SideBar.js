@@ -1,7 +1,10 @@
 import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import image from '../assets/images/logo-DH.png';
 
 function SideBar(){
+    const location = useLocation();
+
     return(
         <React.Fragment>
             {/*<!-- Sidebar -->*/}
@@ -18,10 +21,25 @@ function SideBar(){
                 <hr className="sidebar-divider my-0"/>
 
                 {/*<!-- Nav Item - Dashboard -->*/}
-                <li className="nav-item active">
-                    <a className="nav-link" href="/">
+                <li className={`nav-item ${(location.pathname === "/")?"active":""}`}>
+                    <Link to="/" className="nav-link">
                         <i className="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Dashboard - DH movies</span></a>
+                        <span>Dashboard - DH movies</span>
+                    </Link>
+                </li>
+                {/*<!-- Nav Item - Dashboard -->*/}
+                <li className={`nav-item ${(location.pathname === "/filmes")?"active":""}`}>
+                    <Link to="/filmes" className="nav-link">
+                        <i className="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Filmes</span>
+                    </Link>
+                </li>
+                {/*<!-- Nav Item - Dashboard -->*/}
+                <li className={`nav-item ${(location.pathname === "/generos")?"active":""}`}>
+                    <Link to="/generos" className="nav-link">
+                        <i className="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Gêneros</span>
+                    </Link>
                 </li>
 
                 {/*<!-- Divider -->*/}

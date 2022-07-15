@@ -1,9 +1,9 @@
 import React from 'react';
 import imagenFondo from '../assets/images/mandalorian.jpg';
-import ContentRowMovies from './ContentRowMovies';
-import Painel from './Painel';
-import GenresInDb from './GenresInDb';
-import MoviesList from './MoviesList';
+import ContentRowMovies from '../components/ContentRowMovies';
+import Painel from '../components/Painel';
+import GenresInDb from '../components/GenresInDb';
+import MoviesList from '../components/MoviesList';
 
 function ContentRowTop(){
 	const informacoes = [
